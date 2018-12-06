@@ -31,6 +31,10 @@ Partial Class Form1
         Me.btnClock1Hz = New System.Windows.Forms.Button()
         Me.btnClock10Hz = New System.Windows.Forms.Button()
         Me.tmrAutoClock = New System.Windows.Forms.Timer(Me.components)
+        Me.lblCIR = New System.Windows.Forms.Label()
+        Me.lblMAR = New System.Windows.Forms.Label()
+        Me.lblMDR = New System.Windows.Forms.Label()
+        Me.lblACC = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnClock
@@ -48,7 +52,7 @@ Partial Class Form1
         Me.lblPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblPC.Location = New System.Drawing.Point(156, 31)
         Me.lblPC.Name = "lblPC"
-        Me.lblPC.Size = New System.Drawing.Size(100, 23)
+        Me.lblPC.Size = New System.Drawing.Size(130, 23)
         Me.lblPC.TabIndex = 1
         Me.lblPC.Text = "PC: 0"
         Me.lblPC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -100,11 +104,59 @@ Partial Class Form1
         '
         Me.tmrAutoClock.Interval = 1000
         '
+        'lblCIR
+        '
+        Me.lblCIR.BackColor = System.Drawing.Color.Yellow
+        Me.lblCIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblCIR.Location = New System.Drawing.Point(156, 64)
+        Me.lblCIR.Name = "lblCIR"
+        Me.lblCIR.Size = New System.Drawing.Size(130, 23)
+        Me.lblCIR.TabIndex = 6
+        Me.lblCIR.Text = "PC: 0"
+        Me.lblCIR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblMAR
+        '
+        Me.lblMAR.BackColor = System.Drawing.Color.Yellow
+        Me.lblMAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblMAR.Location = New System.Drawing.Point(156, 95)
+        Me.lblMAR.Name = "lblMAR"
+        Me.lblMAR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMAR.TabIndex = 7
+        Me.lblMAR.Text = "PC: 0"
+        Me.lblMAR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblMDR
+        '
+        Me.lblMDR.BackColor = System.Drawing.Color.Yellow
+        Me.lblMDR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblMDR.Location = New System.Drawing.Point(156, 124)
+        Me.lblMDR.Name = "lblMDR"
+        Me.lblMDR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMDR.TabIndex = 8
+        Me.lblMDR.Text = "PC: 0"
+        Me.lblMDR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblACC
+        '
+        Me.lblACC.BackColor = System.Drawing.Color.Yellow
+        Me.lblACC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblACC.Location = New System.Drawing.Point(156, 152)
+        Me.lblACC.Name = "lblACC"
+        Me.lblACC.Size = New System.Drawing.Size(130, 23)
+        Me.lblACC.TabIndex = 9
+        Me.lblACC.Text = "PC: 0"
+        Me.lblACC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.lblACC)
+        Me.Controls.Add(Me.lblMDR)
+        Me.Controls.Add(Me.lblMAR)
+        Me.Controls.Add(Me.lblCIR)
         Me.Controls.Add(Me.btnClock10Hz)
         Me.Controls.Add(Me.btnClock1Hz)
         Me.Controls.Add(Me.btnStopClock)
@@ -125,4 +177,8 @@ Partial Class Form1
     Friend WithEvents btnClock1Hz As Button
     Friend WithEvents btnClock10Hz As Button
     Friend WithEvents tmrAutoClock As Timer
+    Friend WithEvents lblCIR As Label
+    Friend WithEvents lblMAR As Label
+    Friend WithEvents lblMDR As Label
+    Friend WithEvents lblACC As Label
 End Class
