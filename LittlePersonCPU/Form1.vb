@@ -6,6 +6,7 @@
         cpu.PC.Value += 1
         instructionCount += 1
         UpdateRegisters()
+        UpdateRAM()
     End Sub
 
     Sub UpdateRegisters()
@@ -14,7 +15,11 @@
         cpu.ACC.Update()
         cpu.MAR.Update()
         cpu.MDR.Update()
+    End Sub
 
+    Sub UpdateRAM()
+        lbRAM.Items.Clear()
+        lbRAM.Items.AddRange(cpu.RAM.ToArray)
     End Sub
 
     Private Sub btnClock_Click(sender As Object, e As EventArgs) Handles btnClock.Click
@@ -46,5 +51,9 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cpu = New CPU(Me)
+    End Sub
+
+    Private Sub lbRAM_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbRAM.SelectedIndexChanged
+
     End Sub
 End Class

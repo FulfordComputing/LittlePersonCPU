@@ -35,13 +35,15 @@ Partial Class Form1
         Me.lblMAR = New System.Windows.Forms.Label()
         Me.lblMDR = New System.Windows.Forms.Label()
         Me.lblACC = New System.Windows.Forms.Label()
+        Me.lbRAM = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'btnClock
         '
-        Me.btnClock.Location = New System.Drawing.Point(13, 17)
+        Me.btnClock.Location = New System.Drawing.Point(26, 33)
+        Me.btnClock.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnClock.Name = "btnClock"
-        Me.btnClock.Size = New System.Drawing.Size(105, 51)
+        Me.btnClock.Size = New System.Drawing.Size(210, 98)
         Me.btnClock.TabIndex = 0
         Me.btnClock.Text = "Clock Tick"
         Me.btnClock.UseVisualStyleBackColor = True
@@ -50,9 +52,10 @@ Partial Class Form1
         '
         Me.lblPC.BackColor = System.Drawing.Color.Yellow
         Me.lblPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblPC.Location = New System.Drawing.Point(156, 31)
+        Me.lblPC.Location = New System.Drawing.Point(312, 60)
+        Me.lblPC.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblPC.Name = "lblPC"
-        Me.lblPC.Size = New System.Drawing.Size(130, 23)
+        Me.lblPC.Size = New System.Drawing.Size(258, 42)
         Me.lblPC.TabIndex = 1
         Me.lblPC.Text = "PC: 0"
         Me.lblPC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -61,9 +64,10 @@ Partial Class Form1
         '
         Me.lblClockSpeed.BackColor = System.Drawing.Color.Lime
         Me.lblClockSpeed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblClockSpeed.Location = New System.Drawing.Point(681, 17)
+        Me.lblClockSpeed.Location = New System.Drawing.Point(1362, 33)
+        Me.lblClockSpeed.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblClockSpeed.Name = "lblClockSpeed"
-        Me.lblClockSpeed.Size = New System.Drawing.Size(107, 23)
+        Me.lblClockSpeed.Size = New System.Drawing.Size(212, 42)
         Me.lblClockSpeed.TabIndex = 2
         Me.lblClockSpeed.Text = "Clock Speed: 0"
         Me.lblClockSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -75,27 +79,30 @@ Partial Class Form1
         '
         'btnStopClock
         '
-        Me.btnStopClock.Location = New System.Drawing.Point(13, 74)
+        Me.btnStopClock.Location = New System.Drawing.Point(26, 142)
+        Me.btnStopClock.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnStopClock.Name = "btnStopClock"
-        Me.btnStopClock.Size = New System.Drawing.Size(105, 51)
+        Me.btnStopClock.Size = New System.Drawing.Size(210, 98)
         Me.btnStopClock.TabIndex = 3
         Me.btnStopClock.Text = "Stop"
         Me.btnStopClock.UseVisualStyleBackColor = True
         '
         'btnClock1Hz
         '
-        Me.btnClock1Hz.Location = New System.Drawing.Point(12, 131)
+        Me.btnClock1Hz.Location = New System.Drawing.Point(24, 252)
+        Me.btnClock1Hz.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnClock1Hz.Name = "btnClock1Hz"
-        Me.btnClock1Hz.Size = New System.Drawing.Size(105, 51)
+        Me.btnClock1Hz.Size = New System.Drawing.Size(210, 98)
         Me.btnClock1Hz.TabIndex = 4
         Me.btnClock1Hz.Text = "1Hz"
         Me.btnClock1Hz.UseVisualStyleBackColor = True
         '
         'btnClock10Hz
         '
-        Me.btnClock10Hz.Location = New System.Drawing.Point(12, 188)
+        Me.btnClock10Hz.Location = New System.Drawing.Point(24, 362)
+        Me.btnClock10Hz.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnClock10Hz.Name = "btnClock10Hz"
-        Me.btnClock10Hz.Size = New System.Drawing.Size(105, 51)
+        Me.btnClock10Hz.Size = New System.Drawing.Size(210, 98)
         Me.btnClock10Hz.TabIndex = 5
         Me.btnClock10Hz.Text = "10Hz"
         Me.btnClock10Hz.UseVisualStyleBackColor = True
@@ -108,9 +115,10 @@ Partial Class Form1
         '
         Me.lblCIR.BackColor = System.Drawing.Color.Yellow
         Me.lblCIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblCIR.Location = New System.Drawing.Point(156, 64)
+        Me.lblCIR.Location = New System.Drawing.Point(312, 123)
+        Me.lblCIR.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblCIR.Name = "lblCIR"
-        Me.lblCIR.Size = New System.Drawing.Size(130, 23)
+        Me.lblCIR.Size = New System.Drawing.Size(258, 42)
         Me.lblCIR.TabIndex = 6
         Me.lblCIR.Text = "PC: 0"
         Me.lblCIR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -119,9 +127,10 @@ Partial Class Form1
         '
         Me.lblMAR.BackColor = System.Drawing.Color.Yellow
         Me.lblMAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblMAR.Location = New System.Drawing.Point(156, 95)
+        Me.lblMAR.Location = New System.Drawing.Point(312, 183)
+        Me.lblMAR.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblMAR.Name = "lblMAR"
-        Me.lblMAR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMAR.Size = New System.Drawing.Size(258, 42)
         Me.lblMAR.TabIndex = 7
         Me.lblMAR.Text = "PC: 0"
         Me.lblMAR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -130,9 +139,10 @@ Partial Class Form1
         '
         Me.lblMDR.BackColor = System.Drawing.Color.Yellow
         Me.lblMDR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblMDR.Location = New System.Drawing.Point(156, 124)
+        Me.lblMDR.Location = New System.Drawing.Point(312, 238)
+        Me.lblMDR.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblMDR.Name = "lblMDR"
-        Me.lblMDR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMDR.Size = New System.Drawing.Size(258, 42)
         Me.lblMDR.TabIndex = 8
         Me.lblMDR.Text = "PC: 0"
         Me.lblMDR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -141,18 +151,29 @@ Partial Class Form1
         '
         Me.lblACC.BackColor = System.Drawing.Color.Yellow
         Me.lblACC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblACC.Location = New System.Drawing.Point(156, 152)
+        Me.lblACC.Location = New System.Drawing.Point(312, 292)
+        Me.lblACC.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.lblACC.Name = "lblACC"
-        Me.lblACC.Size = New System.Drawing.Size(130, 23)
+        Me.lblACC.Size = New System.Drawing.Size(258, 42)
         Me.lblACC.TabIndex = 9
         Me.lblACC.Text = "PC: 0"
         Me.lblACC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lbRAM
+        '
+        Me.lbRAM.FormattingEnabled = True
+        Me.lbRAM.ItemHeight = 25
+        Me.lbRAM.Location = New System.Drawing.Point(779, 60)
+        Me.lbRAM.Name = "lbRAM"
+        Me.lbRAM.Size = New System.Drawing.Size(438, 729)
+        Me.lbRAM.TabIndex = 10
+        '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1600, 865)
+        Me.Controls.Add(Me.lbRAM)
         Me.Controls.Add(Me.lblACC)
         Me.Controls.Add(Me.lblMDR)
         Me.Controls.Add(Me.lblMAR)
@@ -163,6 +184,7 @@ Partial Class Form1
         Me.Controls.Add(Me.lblClockSpeed)
         Me.Controls.Add(Me.lblPC)
         Me.Controls.Add(Me.btnClock)
+        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.Name = "Form1"
         Me.Text = "Little Person CPU"
         Me.ResumeLayout(False)
@@ -181,4 +203,5 @@ Partial Class Form1
     Friend WithEvents lblMAR As Label
     Friend WithEvents lblMDR As Label
     Friend WithEvents lblACC As Label
+    Friend WithEvents lbRAM As ListBox
 End Class
