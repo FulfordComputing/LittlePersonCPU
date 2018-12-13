@@ -1,5 +1,8 @@
 ﻿Public Class Form1
+    ' Stores registers and executes commands
     Dim cpu As CPU
+
+    ' Stores instructions and data
     Dim RAM As New List(Of DataStorage)
     Dim instructionCount As Integer = 0
 
@@ -59,9 +62,22 @@
             RAM.Add(New DataStorage(i, 0))
         Next
         UpdateRAM()
+        UpdateRegisters()
     End Sub
 
     Private Sub btnAssemble_Click(sender As Object, e As EventArgs) Handles btnAssemble.Click
 
+    End Sub
+
+    Private Sub lstRAM_DoubleClick(sender As Object, e As EventArgs) Handles lstRAM.DoubleClick
+        Try
+            Dim newValue As Integer = InputBox("What's the new value?")
+            Dim index As Integer = lstRAM.SelectedIndex
+            RAM(index).Value = newValue
+            UpdateRAM()
+            lstRAM.SelectedIndex = index
+        Catch
+            MsgBox("Please enter a valid number")
+        End Try
     End Sub
 End Class

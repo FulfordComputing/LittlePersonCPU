@@ -10,5 +10,12 @@
     Public Sub New(name As String, value As Integer)
         Me.Value = value
         Me.Name = name
+
     End Sub
+
+    Public Overrides Function ToString() As String
+        Return Name & ": " & Value
+    End Function
+
+
 End Class

@@ -183,9 +183,9 @@ Partial Class Form1
         Me.lblCode.AutoSize = True
         Me.lblCode.Location = New System.Drawing.Point(550, 27)
         Me.lblCode.Name = "lblCode"
-        Me.lblCode.Size = New System.Drawing.Size(31, 13)
+        Me.lblCode.Size = New System.Drawing.Size(79, 13)
         Me.lblCode.TabIndex = 13
-        Me.lblCode.Text = "RAM"
+        Me.lblCode.Text = "Assembly Code"
         '
         'btnAssemble
         '

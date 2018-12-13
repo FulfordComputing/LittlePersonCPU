@@ -15,6 +15,9 @@
         Me.lbl = lbl
     End Sub
 
+    ''' <summary>
+    ''' Displays the register's name and value
+    ''' </summary>
     Public Sub Update()
         lbl.Text = Me.Name & ": " & Me.Value
     End Sub
