@@ -35,6 +35,11 @@ Partial Class Form1
         Me.lblMAR = New System.Windows.Forms.Label()
         Me.lblMDR = New System.Windows.Forms.Label()
         Me.lblACC = New System.Windows.Forms.Label()
+        Me.lstRAM = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtCode = New System.Windows.Forms.TextBox()
+        Me.lblCode = New System.Windows.Forms.Label()
+        Me.btnAssemble = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnClock
@@ -148,11 +153,59 @@ Partial Class Form1
         Me.lblACC.Text = "PC: 0"
         Me.lblACC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'lstRAM
+        '
+        Me.lstRAM.FormattingEnabled = True
+        Me.lstRAM.Location = New System.Drawing.Point(318, 48)
+        Me.lstRAM.Name = "lstRAM"
+        Me.lstRAM.Size = New System.Drawing.Size(221, 368)
+        Me.lstRAM.TabIndex = 10
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(315, 30)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(31, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "RAM"
+        '
+        'txtCode
+        '
+        Me.txtCode.Location = New System.Drawing.Point(542, 48)
+        Me.txtCode.Multiline = True
+        Me.txtCode.Name = "txtCode"
+        Me.txtCode.Size = New System.Drawing.Size(233, 336)
+        Me.txtCode.TabIndex = 12
+        '
+        'lblCode
+        '
+        Me.lblCode.AutoSize = True
+        Me.lblCode.Location = New System.Drawing.Point(550, 27)
+        Me.lblCode.Name = "lblCode"
+        Me.lblCode.Size = New System.Drawing.Size(31, 13)
+        Me.lblCode.TabIndex = 13
+        Me.lblCode.Text = "RAM"
+        '
+        'btnAssemble
+        '
+        Me.btnAssemble.Location = New System.Drawing.Point(617, 390)
+        Me.btnAssemble.Name = "btnAssemble"
+        Me.btnAssemble.Size = New System.Drawing.Size(75, 23)
+        Me.btnAssemble.TabIndex = 14
+        Me.btnAssemble.Text = "Assemble"
+        Me.btnAssemble.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAssemble)
+        Me.Controls.Add(Me.lblCode)
+        Me.Controls.Add(Me.txtCode)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lstRAM)
         Me.Controls.Add(Me.lblACC)
         Me.Controls.Add(Me.lblMDR)
         Me.Controls.Add(Me.lblMAR)
@@ -166,6 +219,7 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "Little Person CPU"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -181,4 +235,9 @@ Partial Class Form1
     Friend WithEvents lblMAR As Label
     Friend WithEvents lblMDR As Label
     Friend WithEvents lblACC As Label
+    Friend WithEvents lstRAM As ListBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtCode As TextBox
+    Friend WithEvents lblCode As Label
+    Friend WithEvents btnAssemble As Button
 End Class

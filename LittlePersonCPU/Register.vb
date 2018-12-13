@@ -1,6 +1,6 @@
 ﻿Public Class Register
-    Public Value As Integer
-    Public Name As String
+    Inherits DataStorage
+
     Private lbl As Label
 
     ''' <summary>
@@ -9,6 +9,7 @@
     ''' <param name="name">Name of register</param>
     ''' <param name="initialValue">Value the register stores when CPU switches on</param>
     Public Sub New(name As String, initialValue As Integer, lbl As Label)
+        MyBase.New(name, initialValue)
         Me.Value = initialValue
         Me.Name = name
         Me.lbl = lbl

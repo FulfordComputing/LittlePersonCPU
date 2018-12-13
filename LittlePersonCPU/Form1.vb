@@ -1,11 +1,21 @@
 ﻿Public Class Form1
     Dim cpu As CPU
+    Dim RAM As New List(Of DataStorage)
     Dim instructionCount As Integer = 0
 
     Sub ClockTick()
         cpu.PC.Value += 1
         instructionCount += 1
         UpdateRegisters()
+        UpdateRAM()
+    End Sub
+
+    Sub UpdateRAM()
+        lstRAM.Items.Clear()
+
+        For i = 0 To RAM.Count - 1
+            lstRAM.Items.Add(RAM(i))
+        Next
     End Sub
 
     Sub UpdateRegisters()
@@ -14,7 +24,6 @@
         cpu.ACC.Update()
         cpu.MAR.Update()
         cpu.MDR.Update()
-
     End Sub
 
     Private Sub btnClock_Click(sender As Object, e As EventArgs) Handles btnClock.Click
@@ -46,5 +55,13 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cpu = New CPU(Me)
+        For i = 0 To 255
+            RAM.Add(New DataStorage(i, 0))
+        Next
+        UpdateRAM()
+    End Sub
+
+    Private Sub btnAssemble_Click(sender As Object, e As EventArgs) Handles btnAssemble.Click
+
     End Sub
 End Class
