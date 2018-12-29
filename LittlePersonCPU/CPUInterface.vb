@@ -1,9 +1,6 @@
-﻿Public Class Form1
+﻿Public Class CPUInterface
     ' Stores registers and executes commands
     Dim cpu As CPU
-
-    ' Stores instructions and data
-    Dim RAM As New List(Of DataStorage)
     Dim instructionCount As Integer = 0
 
     Sub ClockTick()
@@ -15,10 +12,7 @@
 
     Sub UpdateRAM()
         lstRAM.Items.Clear()
-
-        For i = 0 To RAM.Count - 1
-            lstRAM.Items.Add(RAM(i))
-        Next
+        lstRAM.Items.AddRange(cpu.RAM.ToArray)
     End Sub
 
     Sub UpdateRegisters()
@@ -58,26 +52,24 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cpu = New CPU(Me)
-        For i = 0 To 255
-            RAM.Add(New DataStorage(i, 0))
-        Next
         UpdateRAM()
         UpdateRegisters()
     End Sub
 
     Private Sub btnAssemble_Click(sender As Object, e As EventArgs) Handles btnAssemble.Click
-
+        Assembler.ShowAssembler(Me.cpu)
     End Sub
 
     Private Sub lstRAM_DoubleClick(sender As Object, e As EventArgs) Handles lstRAM.DoubleClick
         Try
             Dim newValue As Integer = InputBox("What's the new value?")
             Dim index As Integer = lstRAM.SelectedIndex
-            RAM(index).Value = newValue
+            cpu.RAM(index).Value = newValue
             UpdateRAM()
             lstRAM.SelectedIndex = index
         Catch
             MsgBox("Please enter a valid number")
         End Try
     End Sub
+
 End Class

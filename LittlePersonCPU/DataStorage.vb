@@ -1,5 +1,5 @@
 ﻿Public Class DataStorage
-    Public Value As Integer
+    Inherits DataConverter
     Public Name As String
 
     ''' <summary>
@@ -14,7 +14,7 @@
     End Sub
 
     Public Overrides Function ToString() As String
-        Return Name & ": " & Value
+        Return Name & ": " & " 0x" & ToHex() & " (" & Value & ")"
     End Function
 
 

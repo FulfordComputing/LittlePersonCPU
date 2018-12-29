@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class CPUInterface
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -37,8 +37,6 @@ Partial Class Form1
         Me.lblACC = New System.Windows.Forms.Label()
         Me.lstRAM = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.lblCode = New System.Windows.Forms.Label()
         Me.btnAssemble = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -66,7 +64,7 @@ Partial Class Form1
         '
         Me.lblClockSpeed.BackColor = System.Drawing.Color.Lime
         Me.lblClockSpeed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblClockSpeed.Location = New System.Drawing.Point(681, 17)
+        Me.lblClockSpeed.Location = New System.Drawing.Point(432, 17)
         Me.lblClockSpeed.Name = "lblClockSpeed"
         Me.lblClockSpeed.Size = New System.Drawing.Size(107, 23)
         Me.lblClockSpeed.TabIndex = 2
@@ -170,40 +168,21 @@ Partial Class Form1
         Me.Label1.TabIndex = 11
         Me.Label1.Text = "RAM"
         '
-        'txtCode
-        '
-        Me.txtCode.Location = New System.Drawing.Point(542, 48)
-        Me.txtCode.Multiline = True
-        Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(233, 336)
-        Me.txtCode.TabIndex = 12
-        '
-        'lblCode
-        '
-        Me.lblCode.AutoSize = True
-        Me.lblCode.Location = New System.Drawing.Point(550, 27)
-        Me.lblCode.Name = "lblCode"
-        Me.lblCode.Size = New System.Drawing.Size(79, 13)
-        Me.lblCode.TabIndex = 13
-        Me.lblCode.Text = "Assembly Code"
-        '
         'btnAssemble
         '
-        Me.btnAssemble.Location = New System.Drawing.Point(617, 390)
+        Me.btnAssemble.Location = New System.Drawing.Point(237, 393)
         Me.btnAssemble.Name = "btnAssemble"
         Me.btnAssemble.Size = New System.Drawing.Size(75, 23)
         Me.btnAssemble.TabIndex = 14
         Me.btnAssemble.Text = "Assemble"
         Me.btnAssemble.UseVisualStyleBackColor = True
         '
-        'Form1
+        'CPUInterface
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(552, 450)
         Me.Controls.Add(Me.btnAssemble)
-        Me.Controls.Add(Me.lblCode)
-        Me.Controls.Add(Me.txtCode)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lstRAM)
         Me.Controls.Add(Me.lblACC)
@@ -216,7 +195,7 @@ Partial Class Form1
         Me.Controls.Add(Me.lblClockSpeed)
         Me.Controls.Add(Me.lblPC)
         Me.Controls.Add(Me.btnClock)
-        Me.Name = "Form1"
+        Me.Name = "CPUInterface"
         Me.Text = "Little Person CPU"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -237,7 +216,5 @@ Partial Class Form1
     Friend WithEvents lblACC As Label
     Friend WithEvents lstRAM As ListBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtCode As TextBox
-    Friend WithEvents lblCode As Label
     Friend WithEvents btnAssemble As Button
 End Class
