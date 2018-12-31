@@ -33,12 +33,12 @@ Partial Class Assembler
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MachineCodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssemblerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoadFromCPUToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MachineCodeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssemblerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SendToCPUToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnLoadFromCPU = New System.Windows.Forms.Button()
-        Me.btnSaveToCPU = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -80,7 +80,7 @@ Partial Class Assembler
         '
         Me.btnDisassemble.Location = New System.Drawing.Point(374, 434)
         Me.btnDisassemble.Name = "btnDisassemble"
-        Me.btnDisassemble.Size = New System.Drawing.Size(127, 29)
+        Me.btnDisassemble.Size = New System.Drawing.Size(349, 29)
         Me.btnDisassemble.TabIndex = 4
         Me.btnDisassemble.Text = "Disassemble"
         Me.btnDisassemble.UseVisualStyleBackColor = True
@@ -112,7 +112,7 @@ Partial Class Assembler
         '
         'OpenToolStripMenuItem
         '
-        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem, Me.AssemblerToolStripMenuItem})
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem, Me.AssemblerToolStripMenuItem, Me.LoadFromCPUToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.OpenToolStripMenuItem.Text = "&Open"
@@ -129,9 +129,15 @@ Partial Class Assembler
         Me.AssemblerToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.AssemblerToolStripMenuItem.Text = "Open &Assembler"
         '
+        'LoadFromCPUToolStripMenuItem
+        '
+        Me.LoadFromCPUToolStripMenuItem.Name = "LoadFromCPUToolStripMenuItem"
+        Me.LoadFromCPUToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LoadFromCPUToolStripMenuItem.Text = "Load from CPU"
+        '
         'SaveToolStripMenuItem
         '
-        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem1, Me.AssemblerToolStripMenuItem1})
+        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem1, Me.AssemblerToolStripMenuItem1, Me.SendToCPUToolStripMenuItem})
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.SaveToolStripMenuItem.Text = "&Save"
@@ -148,29 +154,17 @@ Partial Class Assembler
         Me.AssemblerToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
         Me.AssemblerToolStripMenuItem1.Text = "Save &Assembler"
         '
+        'SendToCPUToolStripMenuItem
+        '
+        Me.SendToCPUToolStripMenuItem.Name = "SendToCPUToolStripMenuItem"
+        Me.SendToCPUToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.SendToCPUToolStripMenuItem.Text = "Send to CPU"
+        '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
         Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.CloseToolStripMenuItem.Text = "&Close"
-        '
-        'btnLoadFromCPU
-        '
-        Me.btnLoadFromCPU.Location = New System.Drawing.Point(507, 434)
-        Me.btnLoadFromCPU.Name = "btnLoadFromCPU"
-        Me.btnLoadFromCPU.Size = New System.Drawing.Size(89, 29)
-        Me.btnLoadFromCPU.TabIndex = 4
-        Me.btnLoadFromCPU.Text = "Load from CPU"
-        Me.btnLoadFromCPU.UseVisualStyleBackColor = True
-        '
-        'btnSaveToCPU
-        '
-        Me.btnSaveToCPU.Location = New System.Drawing.Point(602, 434)
-        Me.btnSaveToCPU.Name = "btnSaveToCPU"
-        Me.btnSaveToCPU.Size = New System.Drawing.Size(89, 29)
-        Me.btnSaveToCPU.TabIndex = 4
-        Me.btnSaveToCPU.Text = "Save to CPU"
-        Me.btnSaveToCPU.UseVisualStyleBackColor = True
         '
         'Assembler
         '
@@ -178,8 +172,6 @@ Partial Class Assembler
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(730, 469)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.btnSaveToCPU)
-        Me.Controls.Add(Me.btnLoadFromCPU)
         Me.Controls.Add(Me.btnDisassemble)
         Me.Controls.Add(Me.txtMachineCode)
         Me.Controls.Add(Me.Label1)
@@ -211,6 +203,6 @@ Partial Class Assembler
     Friend WithEvents MachineCodeToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AssemblerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CloseToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents btnLoadFromCPU As Button
-    Friend WithEvents btnSaveToCPU As Button
+    Friend WithEvents LoadFromCPUToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SendToCPUToolStripMenuItem As ToolStripMenuItem
 End Class
