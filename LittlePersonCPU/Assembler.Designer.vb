@@ -114,7 +114,7 @@ Partial Class Assembler
         '
         Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem, Me.AssemblerToolStripMenuItem, Me.LoadFromCPUToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'MachineCodeToolStripMenuItem
@@ -139,31 +139,31 @@ Partial Class Assembler
         '
         Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MachineCodeToolStripMenuItem1, Me.AssemblerToolStripMenuItem1, Me.SendToCPUToolStripMenuItem})
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'MachineCodeToolStripMenuItem1
         '
         Me.MachineCodeToolStripMenuItem1.Name = "MachineCodeToolStripMenuItem1"
-        Me.MachineCodeToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
+        Me.MachineCodeToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.MachineCodeToolStripMenuItem1.Text = "Save &Machine code"
         '
         'AssemblerToolStripMenuItem1
         '
         Me.AssemblerToolStripMenuItem1.Name = "AssemblerToolStripMenuItem1"
-        Me.AssemblerToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
+        Me.AssemblerToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.AssemblerToolStripMenuItem1.Text = "Save &Assembler"
         '
         'SendToCPUToolStripMenuItem
         '
         Me.SendToCPUToolStripMenuItem.Name = "SendToCPUToolStripMenuItem"
-        Me.SendToCPUToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.SendToCPUToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SendToCPUToolStripMenuItem.Text = "Send to CPU"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CloseToolStripMenuItem.Text = "&Close"
         '
         'Assembler

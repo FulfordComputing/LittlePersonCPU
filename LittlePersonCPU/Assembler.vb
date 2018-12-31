@@ -2,6 +2,7 @@
 
 Public Class Assembler
     Protected cpu As CPU
+    Public Shared code As String = ""
 
     Public Class AssemblyError
         Inherits Exception
@@ -56,27 +57,8 @@ Public Class Assembler
         Next
 
         ' Syntax analysis
-        ' check there's no duplicated labels
-        Dim labels As New Dictionary(Of String, Integer)
-        For address As Integer = 0 To instructions.Count - 1
-            Dim ins = instructions(address)
-            If Not IsNothing(ins.label) Then
-                If labels.ContainsKey(ins.label) Then
-                    Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Duplicate label: " & ins.label, ins.assembler, ins.lineNumber)
-                Else
 
-                    ' Check label is valid
-                    If Regex.Match(ins.label, "[A-Za-z_][A-Za-z0-9_]*").Success Then
-                        labels.Add(ins.label, address)
-                    Else
-                        Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Invalid label: " & ins.label, ins.assembler, ins.lineNumber)
-                    End If
-
-                End If
-            End If
-        Next
-
-        ' parse opcode
+        ' work out opcode and number of bytes
         For i As Integer = 0 To instructions.Count - 1
             Dim ins As Instruction = instructions(i)
 
@@ -100,7 +82,7 @@ Public Class Assembler
                 Case "ADD"
                     ins.opcode = Instruction.InstructionSet.Add
                 Case "SUB"
-                    Ins.opcode = Instruction.InstructionSet.Subtract
+                    ins.opcode = Instruction.InstructionSet.Subtract
                 Case "BRA"
                     ins.opcode = Instruction.InstructionSet.BranchAlways
                 Case "BRZ"
@@ -116,6 +98,32 @@ Public Class Assembler
                 Case Else
                     Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Unknown instruction " & ins.tokens(0), ins.assembler, ins.lineNumber)
             End Select
+        Next
+
+        ' check there's no duplicated labels
+        Dim labels As New Dictionary(Of String, Integer)
+        Dim address As Integer = 0
+        For Each ins As Instruction In instructions
+            If Not IsNothing(ins.label) Then
+                If labels.ContainsKey(ins.label) Then
+                    Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Duplicate label: " & ins.label, ins.assembler, ins.lineNumber)
+                Else
+
+                    ' Check label is valid
+                    If Regex.Match(ins.label, "[A-Za-z_][A-Za-z0-9_]*").Success Then
+                        labels.Add(ins.label, address)
+                    Else
+                        Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Invalid label: " & ins.label, ins.assembler, ins.lineNumber)
+                    End If
+
+                End If
+            End If
+            address += ins.numberOfBytes
+        Next
+
+        ' parse addressing mode
+        For i As Integer = 0 To instructions.Count - 1
+            Dim ins As Instruction = instructions(i)
 
             ' determine addressing mode for 2 byte instructions
             If ins.numberOfBytes > 1 Then
@@ -132,12 +140,20 @@ Public Class Assembler
                     Select Case a_m
                         Case "#"
                             ins.a_m = Instruction.AddressMode.Immediate
-                        Case "&", ""
+                        Case "&"
                             ins.a_m = Instruction.AddressMode.Direct
                         Case "~"
                             ins.a_m = Instruction.AddressMode.Indirect
                         Case "["
                             ins.a_m = Instruction.AddressMode.Indexed
+                        Case ""
+                            ins.a_m = Instruction.AddressMode.Direct
+                            If ins.opcode = Instruction.InstructionSet.Data Or
+                                    ins.opcode = Instruction.InstructionSet.BranchAlways Or
+                                    ins.opcode = Instruction.InstructionSet.BranchIfPositive Or
+                                    ins.opcode = Instruction.InstructionSet.BranchIfZero Then
+                                ins.a_m = Instruction.AddressMode.Immediate
+                            End If
                         Case Else
                             Throw New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Invalid addressing mode", ins.assembler, ins.lineNumber)
                     End Select
@@ -162,7 +178,10 @@ Public Class Assembler
                 ' assemble single byte instructions
             Else
                 If ins.opcode = Instruction.InstructionSet.Data Then
-                    Dim value As Integer = ins.tokens(1)
+                    Dim value As Integer = 0
+                    If ins.tokens.Length > 1 Then
+                        value = ins.tokens(1)
+                    End If
                     CheckIntRange(value, -128, 255, New AssemblyError(AssemblyError.ErrorType.SyntaxError, "Invalid data value", ins.assembler, ins.lineNumber))
                     ins.machineCode = Hex(value).PadLeft(2, "0")
                 Else
@@ -191,6 +210,7 @@ Public Class Assembler
     Private Sub btnAssemble_Click(sender As Object, e As EventArgs) Handles btnAssemble.Click
         Try
             Assemble()
+            SendToCPU()
         Catch ex As AssemblyError
             MsgBox(ex.Message & " on line " & ex.lineNumber & vbNewLine & ex.line & vbNewLine & ex.detail, MsgBoxStyle.Critical, ex.type.ToString())
         End Try
@@ -241,7 +261,7 @@ Public Class Assembler
 
             ' find address to stop
             Dim stopAddress As Integer = bytes.Length - 1
-            While bytes(stopAddress) = "00" And stopAddress > 1
+            While bytes(stopAddress - 1) = "00" And stopAddress > 1
                 stopAddress -= 1
             End While
 
@@ -312,7 +332,7 @@ Public Class Assembler
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub AssemblerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles MachineCodeToolStripMenuItem1.Click
+    Private Sub AssemblerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AssemblerToolStripMenuItem1.Click
         Dim dlg As New SaveFileDialog
         If dlg.ShowDialog() = DialogResult.OK Then
             My.Computer.FileSystem.WriteAllText(dlg.FileName, txtAssembly.Text, False)
@@ -321,9 +341,9 @@ Public Class Assembler
 
     Public Sub ShowAssembler(cpu As CPU)
         Me.cpu = cpu
+        txtAssembly.Text = code
         Show()
     End Sub
-
 
 
     Private Sub LoadFromCPUToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadFromCPUToolStripMenuItem.Click
@@ -335,6 +355,10 @@ Public Class Assembler
     End Sub
 
     Private Sub SendToCPUToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToCPUToolStripMenuItem.Click
+        SendToCPU()
+    End Sub
+
+    Public Sub SendToCPU()
         Dim bytes As String() = txtMachineCode.Text.Trim.Split(" ")
         For i As Integer = 0 To 255
             Dim value As Integer = 0
@@ -343,5 +367,10 @@ Public Class Assembler
             End If
             cpu.RAM(i).Value = value
         Next
+        CPUInterface.ResetCPU()
+    End Sub
+
+    Private Sub txtAssembly_TextChanged(sender As Object, e As EventArgs) Handles txtAssembly.TextChanged
+        code = txtAssembly.Text
     End Sub
 End Class

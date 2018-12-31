@@ -35,9 +35,20 @@ Partial Class CPUInterface
         Me.lblMAR = New System.Windows.Forms.Label()
         Me.lblMDR = New System.Windows.Forms.Label()
         Me.lblACC = New System.Windows.Forms.Label()
-        Me.lstRAM = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAssemble = New System.Windows.Forms.Button()
+        Me.lblSP = New System.Windows.Forms.Label()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.btnReset = New System.Windows.Forms.Button()
+        Me.lblOutput = New System.Windows.Forms.Label()
+        Me.lstOutput = New System.Windows.Forms.ListBox()
+        Me.gridRAM = New System.Windows.Forms.DataGridView()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.gridRAM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnClock
@@ -53,11 +64,11 @@ Partial Class CPUInterface
         '
         Me.lblPC.BackColor = System.Drawing.Color.Yellow
         Me.lblPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblPC.Location = New System.Drawing.Point(156, 31)
+        Me.lblPC.Location = New System.Drawing.Point(123, 31)
         Me.lblPC.Name = "lblPC"
-        Me.lblPC.Size = New System.Drawing.Size(130, 23)
+        Me.lblPC.Size = New System.Drawing.Size(189, 23)
         Me.lblPC.TabIndex = 1
-        Me.lblPC.Text = "PC: 0"
+        Me.lblPC.Text = "PC"
         Me.lblPC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblClockSpeed
@@ -111,53 +122,45 @@ Partial Class CPUInterface
         '
         Me.lblCIR.BackColor = System.Drawing.Color.Yellow
         Me.lblCIR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblCIR.Location = New System.Drawing.Point(156, 64)
+        Me.lblCIR.Location = New System.Drawing.Point(123, 64)
         Me.lblCIR.Name = "lblCIR"
-        Me.lblCIR.Size = New System.Drawing.Size(130, 23)
+        Me.lblCIR.Size = New System.Drawing.Size(189, 23)
         Me.lblCIR.TabIndex = 6
-        Me.lblCIR.Text = "PC: 0"
+        Me.lblCIR.Text = "CIR"
         Me.lblCIR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblMAR
         '
         Me.lblMAR.BackColor = System.Drawing.Color.Yellow
         Me.lblMAR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblMAR.Location = New System.Drawing.Point(156, 95)
+        Me.lblMAR.Location = New System.Drawing.Point(123, 95)
         Me.lblMAR.Name = "lblMAR"
-        Me.lblMAR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMAR.Size = New System.Drawing.Size(189, 23)
         Me.lblMAR.TabIndex = 7
-        Me.lblMAR.Text = "PC: 0"
+        Me.lblMAR.Text = "MAR"
         Me.lblMAR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblMDR
         '
         Me.lblMDR.BackColor = System.Drawing.Color.Yellow
         Me.lblMDR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblMDR.Location = New System.Drawing.Point(156, 124)
+        Me.lblMDR.Location = New System.Drawing.Point(123, 124)
         Me.lblMDR.Name = "lblMDR"
-        Me.lblMDR.Size = New System.Drawing.Size(130, 23)
+        Me.lblMDR.Size = New System.Drawing.Size(189, 23)
         Me.lblMDR.TabIndex = 8
-        Me.lblMDR.Text = "PC: 0"
+        Me.lblMDR.Text = "MDR"
         Me.lblMDR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblACC
         '
         Me.lblACC.BackColor = System.Drawing.Color.Yellow
         Me.lblACC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblACC.Location = New System.Drawing.Point(156, 152)
+        Me.lblACC.Location = New System.Drawing.Point(123, 152)
         Me.lblACC.Name = "lblACC"
-        Me.lblACC.Size = New System.Drawing.Size(130, 23)
+        Me.lblACC.Size = New System.Drawing.Size(189, 23)
         Me.lblACC.TabIndex = 9
-        Me.lblACC.Text = "PC: 0"
+        Me.lblACC.Text = "ACC"
         Me.lblACC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lstRAM
-        '
-        Me.lstRAM.FormattingEnabled = True
-        Me.lstRAM.Location = New System.Drawing.Point(318, 48)
-        Me.lstRAM.Name = "lstRAM"
-        Me.lstRAM.Size = New System.Drawing.Size(221, 368)
-        Me.lstRAM.TabIndex = 10
         '
         'Label1
         '
@@ -170,21 +173,117 @@ Partial Class CPUInterface
         '
         'btnAssemble
         '
-        Me.btnAssemble.Location = New System.Drawing.Point(237, 393)
+        Me.btnAssemble.Location = New System.Drawing.Point(195, 358)
         Me.btnAssemble.Name = "btnAssemble"
-        Me.btnAssemble.Size = New System.Drawing.Size(75, 23)
+        Me.btnAssemble.Size = New System.Drawing.Size(117, 58)
         Me.btnAssemble.TabIndex = 14
-        Me.btnAssemble.Text = "Assemble"
+        Me.btnAssemble.Text = "Assemble source code"
         Me.btnAssemble.UseVisualStyleBackColor = True
+        '
+        'lblSP
+        '
+        Me.lblSP.BackColor = System.Drawing.Color.Yellow
+        Me.lblSP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblSP.Location = New System.Drawing.Point(123, 181)
+        Me.lblSP.Name = "lblSP"
+        Me.lblSP.Size = New System.Drawing.Size(189, 23)
+        Me.lblSP.TabIndex = 15
+        Me.lblSP.Text = "SP"
+        Me.lblSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblStatus
+        '
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(9, 255)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(122, 13)
+        Me.lblStatus.TabIndex = 16
+        Me.lblStatus.Text = "Press Clock Tick to start"
+        '
+        'btnReset
+        '
+        Me.btnReset.Location = New System.Drawing.Point(72, 358)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(117, 58)
+        Me.btnReset.TabIndex = 17
+        Me.btnReset.Text = "Reset CPU"
+        Me.btnReset.UseVisualStyleBackColor = True
+        '
+        'lblOutput
+        '
+        Me.lblOutput.AutoSize = True
+        Me.lblOutput.Location = New System.Drawing.Point(12, 280)
+        Me.lblOutput.Name = "lblOutput"
+        Me.lblOutput.Size = New System.Drawing.Size(42, 13)
+        Me.lblOutput.TabIndex = 18
+        Me.lblOutput.Text = "Output:"
+        '
+        'lstOutput
+        '
+        Me.lstOutput.FormattingEnabled = True
+        Me.lstOutput.Location = New System.Drawing.Point(11, 296)
+        Me.lstOutput.Name = "lstOutput"
+        Me.lstOutput.Size = New System.Drawing.Size(301, 56)
+        Me.lstOutput.TabIndex = 19
+        '
+        'gridRAM
+        '
+        Me.gridRAM.AllowUserToAddRows = False
+        Me.gridRAM.AllowUserToDeleteRows = False
+        Me.gridRAM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gridRAM.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.gridRAM.Location = New System.Drawing.Point(318, 50)
+        Me.gridRAM.MultiSelect = False
+        Me.gridRAM.Name = "gridRAM"
+        Me.gridRAM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gridRAM.Size = New System.Drawing.Size(487, 366)
+        Me.gridRAM.TabIndex = 20
+        '
+        'Column5
+        '
+        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column5.HeaderText = "Label"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column1.HeaderText = "Address"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.HeaderText = "Denary"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column3.HeaderText = "Hex"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column4.HeaderText = "Binary"
+        Me.Column4.Name = "Column4"
         '
         'CPUInterface
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(552, 450)
+        Me.ClientSize = New System.Drawing.Size(817, 450)
+        Me.Controls.Add(Me.gridRAM)
+        Me.Controls.Add(Me.lstOutput)
+        Me.Controls.Add(Me.lblOutput)
+        Me.Controls.Add(Me.btnReset)
+        Me.Controls.Add(Me.lblStatus)
+        Me.Controls.Add(Me.lblSP)
         Me.Controls.Add(Me.btnAssemble)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lstRAM)
         Me.Controls.Add(Me.lblACC)
         Me.Controls.Add(Me.lblMDR)
         Me.Controls.Add(Me.lblMAR)
@@ -197,6 +296,7 @@ Partial Class CPUInterface
         Me.Controls.Add(Me.btnClock)
         Me.Name = "CPUInterface"
         Me.Text = "Little Person CPU"
+        CType(Me.gridRAM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -214,7 +314,17 @@ Partial Class CPUInterface
     Friend WithEvents lblMAR As Label
     Friend WithEvents lblMDR As Label
     Friend WithEvents lblACC As Label
-    Friend WithEvents lstRAM As ListBox
     Friend WithEvents Label1 As Label
     Friend WithEvents btnAssemble As Button
+    Friend WithEvents lblSP As Label
+    Friend WithEvents lblStatus As Label
+    Friend WithEvents btnReset As Button
+    Friend WithEvents lblOutput As Label
+    Friend WithEvents lstOutput As ListBox
+    Friend WithEvents gridRAM As DataGridView
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
 End Class
