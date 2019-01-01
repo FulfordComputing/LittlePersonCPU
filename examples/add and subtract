@@ -1,0 +1,10 @@
+﻿INP
+STA first
+INP
+ADD first
+OUT
+INP
+SUB first
+OUT
+HLT
+first: DAT

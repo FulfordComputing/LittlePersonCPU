@@ -14,7 +14,7 @@
     End Sub
 
     Public Overrides Function ToString() As String
-        Return Name & ": " & " 0x" & ToHex() & " (" & Value & ")"
+        Return Name & ": " & " 0x" & ToHex() & " (" & ToTwosComplement() & ")"
     End Function
 
 

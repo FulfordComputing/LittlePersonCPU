@@ -101,7 +101,7 @@
                         If ins.a_m <> Instruction.AddressMode.Immediate Then
                             cpu.SendControlSignal(CPU.ControlSignal.ReadFromRAM)
                         End If
-                        If cpu.ACC.Value >= 0 Then
+                        If cpu.ACC.ToTwosComplement >= 0 Then
                             description &= "Braching to " & cpu.MDR.Value & " because ACC >= 0"
                             cpu.PC.Value = cpu.MDR.Value
                         Else
@@ -196,10 +196,12 @@
         lstOutput.Items.Clear()
         nextState = CPUState.Fetch
         UpdateRegisters()
+        gridRAM.ClearSelection()
         UpdateRAM()
     End Sub
 
     Sub UpdateRAM()
+        Dim labels = Assembler.getLabels()
         Dim selected As Integer = 0
         Try
             selected = gridRAM.SelectedRows(0).Index
@@ -207,7 +209,11 @@
         End Try
         gridRAM.Rows.Clear()
         For i As Integer = 0 To cpu.RAM.Count - 1
-            gridRAM.Rows.Add({"", i, cpu.RAM(i).Value, cpu.RAM(i).ToHex(), cpu.RAM(i).ToBinary})
+            Dim label As String = ""
+            If labels.ContainsKey(i) Then
+                label = labels(i)
+            End If
+            gridRAM.Rows.Add({label, i, cpu.RAM(i).ToTwosComplement, cpu.RAM(i).ToHex(), cpu.RAM(i).ToBinary})
         Next
         gridRAM.Rows(selected).Selected = True
     End Sub

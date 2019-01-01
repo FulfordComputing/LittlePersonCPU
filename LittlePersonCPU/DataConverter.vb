@@ -2,10 +2,34 @@
 ''' Converts data between denary, hex and binary
 ''' </summary>
 Public Class DataConverter
-    Public Value As Integer
+    Protected _value As Integer
+    Public Property Value As Integer
+        Get
+            Return _value
+        End Get
+        Set(value As Integer)
+            _value = value
+            ' check sensible values
+            While _value > 255
+                _value -= 256
+            End While
+            While _value < 0
+                _value += 256
+            End While
+        End Set
+    End Property
+
 
     Public Function ToHex() As String
         Return Value.ToString("X2").PadLeft(2, "0")
+    End Function
+
+    Public Function ToTwosComplement() As Integer
+        Dim v As Integer = Value
+        If v > 127 Then
+            v -= 128
+        End If
+        Return v
     End Function
 
     Public Function ToBinary() As String

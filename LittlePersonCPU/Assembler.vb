@@ -3,6 +3,15 @@
 Public Class Assembler
     Protected cpu As CPU
     Public Shared code As String = ""
+    Shared labels As New Dictionary(Of String, Integer)
+    Public Shared Function getLabels() As Dictionary(Of Integer, String)
+        Dim labelsByAddress As New Dictionary(Of Integer, String)
+        For Each label As String In labels.Keys
+            labelsByAddress.Add(labels(label), label)
+        Next
+        Return labelsByAddress
+    End Function
+
 
     Public Class AssemblyError
         Inherits Exception
@@ -101,7 +110,7 @@ Public Class Assembler
         Next
 
         ' check there's no duplicated labels
-        Dim labels As New Dictionary(Of String, Integer)
+        labels.Clear()
         Dim address As Integer = 0
         For Each ins As Instruction In instructions
             If Not IsNothing(ins.label) Then
