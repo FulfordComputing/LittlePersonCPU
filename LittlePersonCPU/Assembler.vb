@@ -1,9 +1,23 @@
 ﻿Imports System.Text.RegularExpressions
 
+''' <summary>
+''' Class to assemble or disassemble LPC instructions
+''' </summary>
 Public Class Assembler
+    ' CPU object to assemble instructions into
     Protected cpu As CPU
+
+    ' last updated code - auto saves
     Public Shared code As String = ""
+
+    ' dictionary of all the instructions that have labels (key is the label name, value is the RAM address that label points to)
     Shared labels As New Dictionary(Of String, Integer)
+
+    ''' <summary>
+    ''' Get a dictionary of all the labels where the key is the RAM address and the value is the label name)
+    ''' This is thye opposite way round from the labels attribute
+    ''' </summary>
+    ''' <returns></returns>
     Public Shared Function getLabels() As Dictionary(Of Integer, String)
         Dim labelsByAddress As New Dictionary(Of Integer, String)
         For Each label As String In labels.Keys
@@ -13,19 +27,38 @@ Public Class Assembler
     End Function
 
 
+    ''' <summary>
+    ''' Custom exception class
+    ''' </summary>
     Public Class AssemblyError
         Inherits Exception
+
+        ' Error can be thrown at any of these stages of assembly
         Enum ErrorType
             LexicalError
             SyntaxError
             SemanticsError
         End Enum
 
+        ' Type of error (indicates whether it occured during lexical analysis, syntax analysis or semantic analysis)
         Public type As ErrorType
+
+        ' Assembly code line number where the error occured
         Public lineNumber As Integer
+
+        ' Assembly code at the line of code where the error occured
         Public line As String
+
+        ' More details about the error
         Public detail As String
 
+        ''' <summary>
+        ''' Create a new assembly error exception
+        ''' </summary>
+        ''' <param name="type">Type if error</param>
+        ''' <param name="message">Error message to display</param>
+        ''' <param name="line">Assembly code where the error was detected</param>
+        ''' <param name="lineNumber">Line number where the error was detected</param>
         Public Sub New(type As ErrorType, message As String, line As String, lineNumber As Integer)
             MyBase.New(message)
             Me.type = type
@@ -34,6 +67,9 @@ Public Class Assembler
         End Sub
     End Class
 
+    ''' <summary>
+    ''' Convert assembly code into machine code
+    ''' </summary>
     Sub Assemble()
         ' lexical analysis
 
@@ -216,6 +252,11 @@ Public Class Assembler
 
     End Sub
 
+    ''' <summary>
+    ''' Button handler to assemble the code and send it to the CPU
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnAssemble_Click(sender As Object, e As EventArgs) Handles btnAssemble.Click
         Try
             Assemble()
@@ -225,10 +266,22 @@ Public Class Assembler
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Displays an error message
+    ''' </summary>
+    ''' <param name="message"></param>
     Private Sub ErrMsg(message As String)
         MsgBox("Error: " & message, MsgBoxStyle.Critical, "Error")
     End Sub
 
+    ''' <summary>
+    ''' Validate a value
+    ''' </summary>
+    ''' <param name="valToCheck">Integer value to validate</param>
+    ''' <param name="minExpectedValue">Minimum allowed value (inclusive)</param>
+    ''' <param name="maxExpectedValue">Maximum allowed value (inclusive)</param>
+    ''' <param name="exception">Exception to raise/throw if the value isn't valid</param>
+    ''' <returns></returns>
     Private Function CheckIntRange(valToCheck As Integer, minExpectedValue As Integer, maxExpectedValue As Integer, Optional exception As AssemblyError = Nothing) As Boolean
         If valToCheck >= minExpectedValue And valToCheck <= maxExpectedValue Then
             Return True
@@ -241,6 +294,13 @@ Public Class Assembler
         Return False
     End Function
 
+    ''' <summary>
+    ''' Validate a value
+    ''' </summary>
+    ''' <param name="valToCheck">Integer valuye to check</param>
+    ''' <param name="expectedValue">Correct and expected value</param>
+    ''' <param name="exception">Exceotuib to raise / throw if the valuye isn't valid</param>
+    ''' <returns></returns>
     Private Function CheckInt(valToCheck As Integer, expectedValue As Integer, Optional exception As AssemblyError = Nothing) As Boolean
         If valToCheck = expectedValue Then
             Return True
@@ -304,12 +364,12 @@ Public Class Assembler
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
-        Dim dlg As New OpenFileDialog
-        If dlg.ShowDialog() = DialogResult.OK Then
-            txtMachineCode.Text = My.Computer.FileSystem.ReadAllText(dlg.FileName)
-        End If
-
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MachineCodeToolStripMenuItem.Click
+        Dim strMachineCode As String = ""
+        For i As Integer = 0 To 255
+            strMachineCode += cpu.RAM(i).ToHex() & " "
+        Next
+        txtMachineCode.Text = strMachineCode
     End Sub
 
     ''' <summary>
@@ -354,19 +414,18 @@ Public Class Assembler
         Show()
     End Sub
 
-
-    Private Sub LoadFromCPUToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadFromCPUToolStripMenuItem.Click
-        Dim strMachineCode As String = ""
-        For i As Integer = 0 To 255
-            strMachineCode += cpu.RAM(i).ToHex() & " "
-        Next
-        txtMachineCode.Text = strMachineCode
-    End Sub
-
+    ''' <summary>
+    ''' File > Save > Send to CPU
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub SendToCPUToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToCPUToolStripMenuItem.Click
         SendToCPU()
     End Sub
 
+    ''' <summary>
+    ''' Sends machine code data to CPU RAM
+    ''' </summary>
     Public Sub SendToCPU()
         Dim bytes As String() = txtMachineCode.Text.Trim.Split(" ")
         For i As Integer = 0 To 255
@@ -379,6 +438,11 @@ Public Class Assembler
         CPUInterface.ResetCPU()
     End Sub
 
+    ''' <summary>
+    ''' Save the latest assembly code when it's changed
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtAssembly_TextChanged(sender As Object, e As EventArgs) Handles txtAssembly.TextChanged
         code = txtAssembly.Text
     End Sub

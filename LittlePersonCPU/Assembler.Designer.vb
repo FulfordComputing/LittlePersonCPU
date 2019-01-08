@@ -145,19 +145,19 @@ Partial Class Assembler
         'MachineCodeToolStripMenuItem1
         '
         Me.MachineCodeToolStripMenuItem1.Name = "MachineCodeToolStripMenuItem1"
-        Me.MachineCodeToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.MachineCodeToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
         Me.MachineCodeToolStripMenuItem1.Text = "Save &Machine code"
         '
         'AssemblerToolStripMenuItem1
         '
         Me.AssemblerToolStripMenuItem1.Name = "AssemblerToolStripMenuItem1"
-        Me.AssemblerToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.AssemblerToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
         Me.AssemblerToolStripMenuItem1.Text = "Save &Assembler"
         '
         'SendToCPUToolStripMenuItem
         '
         Me.SendToCPUToolStripMenuItem.Name = "SendToCPUToolStripMenuItem"
-        Me.SendToCPUToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SendToCPUToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.SendToCPUToolStripMenuItem.Text = "Send to CPU"
         '
         'CloseToolStripMenuItem
