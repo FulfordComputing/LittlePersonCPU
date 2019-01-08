@@ -13,7 +13,7 @@ Public Class DataConverter
             While _value > 255
                 _value -= 256
             End While
-            While _value < 0
+            While _value < -128
                 _value += 256
             End While
         End Set
@@ -21,7 +21,7 @@ Public Class DataConverter
 
 
     Public Function ToHex() As String
-        Return Value.ToString("X2").PadLeft(2, "0")
+        Return Right(Value.ToString("X2").PadLeft(2, "0"), 2)
     End Function
 
     Public Function ToTwosComplement() As Integer
@@ -33,6 +33,6 @@ Public Class DataConverter
     End Function
 
     Public Function ToBinary() As String
-        Return Convert.ToString(Value, 2).PadLeft(8, "0")
+        Return Right(Convert.ToString(Value, 2).PadLeft(8, "0"), 8)
     End Function
 End Class
