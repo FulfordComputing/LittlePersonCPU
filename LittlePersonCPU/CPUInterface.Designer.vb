@@ -46,6 +46,7 @@ Partial Class CPUInterface
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.gridRAM, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -231,10 +232,11 @@ Partial Class CPUInterface
         Me.gridRAM.AllowUserToAddRows = False
         Me.gridRAM.AllowUserToDeleteRows = False
         Me.gridRAM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridRAM.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.gridRAM.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column6, Me.Column3, Me.Column4})
         Me.gridRAM.Location = New System.Drawing.Point(318, 50)
         Me.gridRAM.MultiSelect = False
         Me.gridRAM.Name = "gridRAM"
+        Me.gridRAM.ReadOnly = True
         Me.gridRAM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gridRAM.Size = New System.Drawing.Size(487, 366)
         Me.gridRAM.TabIndex = 20
@@ -258,18 +260,27 @@ Partial Class CPUInterface
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Column2.HeaderText = "Denary"
         Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Twos' Complement"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
         '
         'Column3
         '
         Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Column3.HeaderText = "Hex"
         Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         '
         'Column4
         '
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Column4.HeaderText = "Binary"
         Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
         '
         'CPUInterface
         '
@@ -325,6 +336,7 @@ Partial Class CPUInterface
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
 End Class

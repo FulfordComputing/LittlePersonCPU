@@ -27,7 +27,7 @@ Public Class DataConverter
     Public Function ToTwosComplement() As Integer
         Dim v As Integer = Value
         If v > 127 Then
-            v -= 128
+            v = v - 256
         End If
         Return v
     End Function

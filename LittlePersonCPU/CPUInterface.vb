@@ -213,7 +213,7 @@
             If labels.ContainsKey(i) Then
                 label = labels(i)
             End If
-            gridRAM.Rows.Add({label, i, cpu.RAM(i).ToTwosComplement, cpu.RAM(i).ToHex(), cpu.RAM(i).ToBinary})
+            gridRAM.Rows.Add({label, i, cpu.RAM(i).Value, cpu.RAM(i).ToTwosComplement, cpu.RAM(i).ToHex(), cpu.RAM(i).ToBinary})
         Next
         gridRAM.Rows(selected).Selected = True
     End Sub
